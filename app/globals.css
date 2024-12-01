@@ -3,19 +3,32 @@
 @tailwind utilities;
 
 :root {
+  /* Light Mode Colors */
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* Cyberpunk-inspired palette */
+  --primary-50: #e6f1ff;
+  --primary-500: #0070f3;
+  --secondary-500: #f30070;
+  --accent-neon: #00ffff;
+  --accent-pastel: #ff6b9e;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  /* Dark Mode Colors */
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  
+  /* Dark mode variants */
+  --primary-500: #1a89ff;
+  --secondary-500: #ff1a8c;
+  --accent-neon: #00ffff;
+  --accent-pastel: #ff6b9e;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, sans-serif;
 }
