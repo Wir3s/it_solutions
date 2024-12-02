@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 
 type AnimatedSVGProps = React.SVGProps<SVGSVGElement>;
 
@@ -9,13 +10,14 @@ const AnimatedSVG: React.FC<AnimatedSVGProps> = ({ className, ...props }) => {
   const svgRef = useRef<SVGSVGElement | null>(null);
 
   useEffect(() => {
+    gsap.registerPlugin(MotionPathPlugin);
+
     if (svgRef.current) {
-      // Get references to SVG elements
       const circles = svgRef.current.querySelectorAll("circle:not(.spark)");
       const lines = svgRef.current.querySelectorAll("line");
       const sparks = svgRef.current.querySelectorAll(".spark");
 
-      // Animate lines: make them look like they are being drawn
+      // Lines animation (unchanged)
       gsap.fromTo(
         lines,
         { strokeDasharray: "100%", strokeDashoffset: "100%" },
@@ -27,7 +29,7 @@ const AnimatedSVG: React.FC<AnimatedSVGProps> = ({ className, ...props }) => {
         }
       );
 
-      // Animate circles: scaling in with elasticity
+      // Circles animation (unchanged)
       gsap.fromTo(
         circles,
         { scale: 0, transformOrigin: "center", opacity: 0 },
@@ -40,36 +42,64 @@ const AnimatedSVG: React.FC<AnimatedSVGProps> = ({ className, ...props }) => {
         }
       );
 
-      // Animate sparks traveling along the lines
+      // Spark animations
       sparks.forEach((spark, index) => {
         const line = lines[index];
         if (line) {
-          // Get line coordinates to determine animation path
-          const x1 = parseFloat(line.getAttribute("x1") || "0");
-          const y1 = parseFloat(line.getAttribute("y1") || "0");
+          const centerX = 200;
+          const centerY = 200;
           const x2 = parseFloat(line.getAttribute("x2") || "0");
           const y2 = parseFloat(line.getAttribute("y2") || "0");
 
-          gsap.fromTo(
-            spark,
-            { cx: x1, cy: y1, opacity: 0.8 },
-            {
-              cx: x2,
-              cy: y2,
-              duration: 2,
-              ease: "power2.inOut",
-              delay: 2, // Wait for the lines to be drawn first
-              onComplete: () => {
-                // Expand and vanish effect once the spark reaches the end
-                gsap.to(spark, {
-                  scale: 2,
-                  opacity: 0,
-                  duration: 1,
-                  ease: "power2.inOut"
-                });
-              },
-            }
-          );
+          if (index === 0) {
+            // First line with a kink
+            gsap.fromTo(
+              spark,
+              { cx: centerX, cy: centerY, opacity: 0.8, scale: 1 },
+              {
+                motionPath: {
+                  path: [
+                    { x: centerX, y: centerY },
+                    { x: 160, y: 180 },
+                    { x: x2, y: y2 }
+                  ],
+                  curviness: 0
+                },
+                duration: 2,
+                ease: "power2.inOut",
+                delay: 2,
+                onComplete: () => {
+                  gsap.to(spark, {
+                    scale: 3,
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power2.inOut"
+                  });
+                },
+              }
+            );
+          } else {
+            // Other lines (straight paths)
+            gsap.fromTo(
+              spark,
+              { cx: centerX, cy: centerY, opacity: 0.8, scale: 1 },
+              {
+                cx: x2,
+                cy: y2,
+                duration: 2,
+                ease: "power2.inOut",
+                delay: 2,
+                onComplete: () => {
+                  gsap.to(spark, {
+                    scale: 3,
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power2.inOut"
+                  });
+                },
+              }
+            );
+          }
         }
       });
     }
@@ -81,18 +111,26 @@ const AnimatedSVG: React.FC<AnimatedSVGProps> = ({ className, ...props }) => {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 400 400"
       className={className}
-      {...props} // Spread other props
+      {...props}
     >
       <defs>
-        {/* Radial Gradient for the Spark */}
+        {/* Enhanced Radial Gradient for the Spark */}
         <radialGradient id="sparkGradient" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="yellow" />
-          <stop offset="100%" stopColor="orange" />
+          <stop offset="0%" stopColor="cyan" stopOpacity="1" />
+          <stop offset="50%" stopColor="blue" stopOpacity="0.7" />
+          <stop offset="100%" stopColor="white" stopOpacity="0" />
         </radialGradient>
 
-        {/* Glow Filter */}
+        {/* Enhanced Glow Filter */}
         <filter id="glow">
-          <feGaussianBlur stdDeviation="4.5" result="coloredBlur" />
+          <feGaussianBlur stdDeviation="5" result="coloredBlur" />
+          <feColorMatrix 
+            type="matrix" 
+            values="0 0 0 0 0
+                    0 0 0 0 1
+                    0 0 0 0 1
+                    0 0 0 1 0"
+          />
           <feMerge>
             <feMergeNode in="coloredBlur" />
             <feMergeNode in="SourceGraphic" />
@@ -103,8 +141,9 @@ const AnimatedSVG: React.FC<AnimatedSVGProps> = ({ className, ...props }) => {
       {/* Main Circle */}
       <circle cx="200" cy="200" r="50" stroke="black" strokeWidth="2" fill="lightgray" />
 
-      {/* Line 1 and Circle (Between 9:00 and 11:00 Position) */}
-      <line x1="200" y1="200" x2="120" y2="150" stroke="black" strokeWidth="2" />
+      {/* Line 1 with Kink (Between 9:00 and 11:00 Position) */}
+      <line x1="200" y1="200" x2="160" y2="180" stroke="black" strokeWidth="2" />
+      <line x1="160" y1="180" x2="120" y2="150" stroke="black" strokeWidth="2" />
       <circle cx="120" cy="150" r="15" stroke="black" strokeWidth="2" fill="lightgray" />
 
       {/* Line 2 and Circle */}
