@@ -12,7 +12,7 @@ module.exports = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         primary: {
-          50: "#e6f1ff",
+          50: "#e6f1ff",     
           100: "#b3d7ff",
           200: "#80bdff",
           300: "#4da3ff",
