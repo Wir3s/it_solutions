@@ -7,17 +7,17 @@ const projects = [
   {
     title: "AstroAI Horoscope Generator",
     description: "A full-stack application that uses a custom GPT model to generate personalized horoscopes, blending human creativity with AI capabilities.",
-    imageUrl: "/images/astroai.png"
+    imageUrl: "/images/projects/astroai.png"
   },
   {
     title: "Power-Up Pizzeria Website",
     description: "A playful, vibrant website for a local pizza restaurant, incorporating gaming and comic book themes to engage customers.",
-    imageUrl: "/images/powerup_pizzeria.png"
+    imageUrl: "/images/projects/poweruppizza.png"
   },
   {
     title: "Mars Rover Photo Gallery",
     description: "An interactive photo gallery showcasing recent images from NASA's Mars rovers, using React and Next.js to create a dynamic user experience.",
-    imageUrl: "/images/mars_rover.png"
+    imageUrl: "/images/projects/marsrover.png"
   }
 ];
 

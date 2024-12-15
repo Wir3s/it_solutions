@@ -2,12 +2,15 @@
 
 import { motion } from "framer-motion";
 import CloudHostingSVG from "../animation/CloudHostingSVG";
+import InformedDecisionSVG from "../animation/InformedDecisionSVG";
+import ServerClusterSVG from "../animation/ServerClusterSVG";
+import ProgrammerSVG from "../animation/ProgrammerSVG";
 
 const services = [
   {
     title: "IT Support & Maintenance",
     description: "Keep your systems running smoothly with troubleshooting, proactive maintenance, and quick solutions to tech issues.",
-    SvgComponent: CloudHostingSVG,
+    SvgComponent: ServerClusterSVG,
     link: "/services#it-support",
   },
   {
@@ -19,13 +22,13 @@ const services = [
   {
     title: "IT Infrastructure Consulting",
     description: "From phone systems to servers, we help build reliable IT setups for your business needs.",
-    SvgComponent: CloudHostingSVG,
+    SvgComponent: InformedDecisionSVG,
     link: "/services#infrastructure",
   },
   {
     title: "Security Solutions",
     description: "Protect your data with secure networks, firewalls, and backup solutions.",
-    SvgComponent: CloudHostingSVG,
+    SvgComponent: ProgrammerSVG,
     link: "/services#security",
   },
 ];
@@ -61,7 +64,7 @@ export default function ServicesSection() {
               transition={{ duration: 0.7, delay: index * 0.2 }}
               whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(0,0,0,0.3)" }}
             >
-              <service.SvgComponent className="mb-6 w-20 h-20 text-blue-600 dark:text-blue-400" />
+              <service.SvgComponent className="mb-6 w-28 h-28 text-blue-600 dark:text-blue-400" />
               <h3 className="text-xl font-semibold mb-4">{service.title}</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
                 {service.description}
