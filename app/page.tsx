@@ -3,6 +3,7 @@ import HeroSection from "../components/sections/HeroSection";
 import AboutSection from "../components/sections/AboutSection";
 import ProjectsSection from "../components/sections/ProjectsSection";
 import ServicesSection from "../components/sections/ServicesSection"; // Add Services Section
+import HubspotForm from "../components/forms/HubspotForm"; // Import HubspotForm
 import { ScrollReveal } from "../components/animation/ScrollReveal";
 import "./globals.css";
 
@@ -15,16 +16,20 @@ export default function Home() {
       duration-300">
       <Navbar />
       <main className="space-y-16">
-        <ScrollReveal>
+        <ScrollReveal type="fade" delay={0.2}>
           <HeroSection />
         </ScrollReveal>
-        <ScrollReveal direction="left" delay={0.3}>
+        <ScrollReveal type="scale" delay={0.3}>
           <AboutSection />
         </ScrollReveal>
-        <ScrollReveal direction="up" delay={0.5}>
-          <ServicesSection /> 
+        <ScrollReveal type="slide" direction="left" delay={0.4}>
+          <ServicesSection />
         </ScrollReveal>
-        <ScrollReveal direction="up" delay={0.7}>
+        <ScrollReveal 
+          type="scale" 
+          delay={0.3} 
+          duration={1}
+        >
           <ProjectsSection />
         </ScrollReveal>
       </main>

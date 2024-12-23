@@ -14,16 +14,16 @@ export default function Navbar() {
       </Link>
       <div className="flex items-center space-x-4">
         <Link 
-          href="/projects" 
-          className="text-gray-700 dark:text-gray-300 hover:text-blue-600"
-        >
-          Projects
-        </Link>
-        <Link 
           href="/services" 
           className="text-gray-700 dark:text-gray-300 hover:text-blue-600"
         >
           Services
+        </Link>
+        <Link 
+          href="/contact" 
+          className="text-gray-700 dark:text-gray-300 hover:text-blue-600"
+        >
+          Contact
         </Link>
         <ThemeToggle />
       </div>

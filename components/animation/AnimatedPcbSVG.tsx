@@ -20,14 +20,16 @@ const AnimatedPcbSVG: React.FC = () => {
         }
       );
     }
-  }, []);
+  }, [svgRef.current]);
 
   return (
     <svg
       ref={svgRef}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1365.3333 1365.3333"
-      className="w-[1000px] h-[1000px]"
+      className="w-full max-w-[1000px] h-auto"
+      role="img"
+      aria-label="Animated PCB"
     >
 
             {/* Group 1 to Animate */}
