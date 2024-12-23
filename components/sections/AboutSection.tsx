@@ -28,7 +28,7 @@ export default function AboutSection() {
         About Me
       </h3>
       <p className="text-lg">
-        Hi, I'm Andre, an IT professional and web developer with a passion for
+        Hi, I&apos;m Andre, an IT professional and web developer with a passion for
         problem-solving and creating efficient solutions for small businesses.
         I specialize in IT support, website design, and providing personalized
         tech consulting to meet your unique needs.

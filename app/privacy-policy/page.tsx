@@ -32,7 +32,7 @@ export default function PrivacyPolicy() {
           <h2 className="text-2xl font-semibold">3. How We Share Your Information</h2>
           <p>We do not sell or rent your personal information to third parties. However, we may share information with:</p>
           <ul className="list-disc list-inside">
-            <li><strong>Service Providers</strong>: We use trusted third-party services, including HubSpot, to store and process the information you submit through our contact forms. HubSpot helps us manage communications, analyze website performance, and enhance user experience. For more information, you can review HubSpot’s Privacy Policy at <a href="https://legal.hubspot.com/privacy-policy" target="_blank" className="text-blue-600 hover:underline">https://legal.hubspot.com/privacy-policy</a>.</li>
+            <li><strong>Service Providers</strong>: We use trusted third-party services, including HubSpot, to store and process the information you submit through our contact forms. HubSpot helps us manage communications, analyze website performance, and enhance user experience. For more information, you can review HubSpot&apos;s Privacy Policy at <a href="https://legal.hubspot.com/privacy-policy" target="_blank" className="text-blue-600 hover:underline">https://legal.hubspot.com/privacy-policy</a>.</li>
             <li><strong>Legal Obligations</strong>: If required by law or to protect our legal rights.</li>
           </ul>
         </section>
@@ -72,7 +72,7 @@ export default function PrivacyPolicy() {
 
         <section>
           <h2 className="text-2xl font-semibold">8. Changes to This Privacy Policy</h2>
-          <p>We may update this policy from time to time. Changes will be posted on this page with a revised "Last Updated" date.</p>
+          <p>We may update this policy from time to time. Changes will be posted on this page with a revised &quot;Last Updated&quot; date.</p>
         </section>
 
         <section>
@@ -85,7 +85,7 @@ export default function PrivacyPolicy() {
           <h2 className="text-2xl font-semibold">10. Third-Party Providers</h2>
           <p>We use the following third-party services to operate our website and provide our services:</p>
           <ul className="list-disc list-inside">
-            <li><strong>HubSpot</strong>: We use HubSpot to store and process form submissions, manage email communications, and analyze website traffic. HubSpot may collect personal information and usage data on our behalf. For details, refer to HubSpot’s Privacy Policy at <a href="https://legal.hubspot.com/privacy-policy" target="_blank" className="text-blue-600 hover:underline">https://legal.hubspot.com/privacy-policy</a>.</li>
+            <li><strong>HubSpot</strong>: We use HubSpot to store and process form submissions, manage email communications, and analyze website traffic. HubSpot may collect personal information and usage data on our behalf. For details, refer to HubSpot&apos;s Privacy Policy at <a href="https://legal.hubspot.com/privacy-policy" target="_blank" className="text-blue-600 hover:underline">https://legal.hubspot.com/privacy-policy</a>.</li>
           </ul>
         </section>
       </main>

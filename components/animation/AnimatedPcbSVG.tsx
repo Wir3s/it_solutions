@@ -20,7 +20,7 @@ const AnimatedPcbSVG: React.FC = () => {
         }
       );
     }
-  }, [svgRef.current]);
+  }, []);
 
   return (
     <svg
