@@ -10,62 +10,60 @@ import ProgrammerSVG from "../animation/ProgrammerSVG";
 const services = [
   {
     title: "IT Support & Maintenance",
-    description: "Keep your systems running smoothly with troubleshooting, proactive maintenance, and quick solutions to tech issues.",
+    description:
+      "Keep your systems running smoothly with troubleshooting, proactive maintenance, and quick solutions to tech issues.",
     SvgComponent: ServerClusterSVG,
     link: "/services#it-support",
   },
   {
     title: "Networking & Connectivity",
-    description: "Fast, secure networks tailored for your business, including Wi-Fi and cabling solutions.",
+    description:
+      "Fast, secure networks tailored for your business, including Wi-Fi and cabling solutions.",
     SvgComponent: CloudHostingSVG,
     link: "/services#networking",
   },
   {
     title: "IT Infrastructure Consulting",
-    description: "From phone systems to servers, we help build reliable IT setups for your business needs.",
+    description:
+      "From phone systems to servers, we help build reliable IT setups for your business needs.",
     SvgComponent: InformedDecisionSVG,
     link: "/services#infrastructure",
   },
   {
     title: "Security Solutions",
-    description: "Protect your data with secure networks, firewalls, and backup solutions.",
+    description:
+      "Protect your data with secure networks, firewalls, and backup solutions.",
     SvgComponent: ProgrammerSVG,
     link: "/services#security",
   },
 ];
 
 export default function ServicesSection() {
-  const sectionRef = useRef(null); // Reference for the section container
+  const sectionRef = useRef<HTMLDivElement | null>(null); // Reference for the section container
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]); // References for the service cards
 
   useEffect(() => {
-    // Animate the section heading and paragraph
-    const tl = gsap.timeline();
-    if (sectionRef.current) {
-      tl.fromTo(
-        (sectionRef.current as HTMLElement).querySelector("h2"),
-        { opacity: 0, y: -20 },
-        { opacity: 1, y: 0, duration: 0.5 }
-      )
-        .fromTo(
-          (sectionRef.current as HTMLElement).querySelector("p"),
-          { opacity: 0 },
-          { opacity: 1, duration: 0.5 },
-          "<0.2"
-        )
-        .fromTo(
-          cardsRef.current,
-          { opacity: 0, y: 50, rotate: -2 },
-          {
-            opacity: 1,
-            y: 0,
-            rotate: 0,
-            duration: 0.7,
-            stagger: 0.2,
-            ease: "power1.out",
-          }
-        );
-    }
+    // Add hover animations to each card
+    cardsRef.current.forEach((card) => {
+      if (card) {
+        const hoverIn = () => {
+          gsap.to(card, { scale: 1.05, duration: 0.3, ease: "power1.out" });
+        };
+
+        const hoverOut = () => {
+          gsap.to(card, { scale: 1, duration: 0.3, ease: "power1.out" });
+        };
+
+        card.addEventListener("mouseenter", hoverIn);
+        card.addEventListener("mouseleave", hoverOut);
+
+        // Cleanup listeners on unmount
+        return () => {
+          card.removeEventListener("mouseenter", hoverIn);
+          card.removeEventListener("mouseleave", hoverOut);
+        };
+      }
+    });
   }, []);
 
   return (
@@ -107,6 +105,8 @@ export default function ServicesSection() {
     </section>
   );
 }
+
+
 
 
 
