@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import Link from "next/link";
 import { useIsomorphicLayoutEffect } from '../hooks/useIsomorphicLayoutEffect';
 import AnimatedPcbSVG from "../animation/AnimatedPcbSVG";

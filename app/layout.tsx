@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { ThemeProvider } from "next-themes";
 import localFont from "next/font/local";
+import Navbar from "../components/layout/Navbar"; // Import Navbar
+import Footer from "../components/layout/Footer"; // Import Footer
 import "./globals.css";
 
 const geistSans = localFont({
@@ -50,10 +52,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <Navbar /> {/* Add Navbar here */}
+          <main>{children}</main> {/* Page-specific content */}
+          <Footer /> {/* Add Footer here */}
         </ThemeProvider>
       </body>
     </html>
   );
 }
+
 

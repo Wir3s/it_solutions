@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 import CloudHostingSVG from "../animation/CloudHostingSVG";
 import InformedDecisionSVG from "../animation/InformedDecisionSVG";
 import ServerClusterSVG from "../animation/ServerClusterSVG";
@@ -34,54 +35,78 @@ const services = [
 ];
 
 export default function ServicesSection() {
+  const sectionRef = useRef(null); // Reference for the section container
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]); // References for the service cards
+
+  useEffect(() => {
+    // Animate the section heading and paragraph
+    const tl = gsap.timeline();
+    if (sectionRef.current) {
+      tl.fromTo(
+        (sectionRef.current as HTMLElement).querySelector("h2"),
+        { opacity: 0, y: -20 },
+        { opacity: 1, y: 0, duration: 0.5 }
+      )
+        .fromTo(
+          (sectionRef.current as HTMLElement).querySelector("p"),
+          { opacity: 0 },
+          { opacity: 1, duration: 0.5 },
+          "<0.2"
+        )
+        .fromTo(
+          cardsRef.current,
+          { opacity: 0, y: 50, rotate: -2 },
+          {
+            opacity: 1,
+            y: 0,
+            rotate: 0,
+            duration: 0.7,
+            stagger: 0.2,
+            ease: "power1.out",
+          }
+        );
+    }
+  }, []);
+
   return (
-    <section className="relative py-16 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100">
+    <section
+      ref={sectionRef}
+      className="relative py-16 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+    >
       <div className="container mx-auto px-4">
-        <motion.h2
-          className="text-3xl sm:text-4xl font-bold text-center mb-8"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8">
           Tailored IT Solutions for Small Businesses
-        </motion.h2>
-        <motion.p
-          className="text-lg text-center mb-12"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-        >
+        </h2>
+        <p className="text-lg text-center mb-12">
           Simplify your technology. Maximize your productivity.
-        </motion.p>
+        </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
-            <motion.div
+            <div
               key={index}
+              ref={(el) => {
+                cardsRef.current[index] = el;
+              }}
               className="flex flex-col items-center text-center p-6 rounded-lg shadow-lg bg-white dark:bg-gray-700 hover:shadow-xl transition-shadow"
-              initial={{ opacity: 0, y: 50, rotate: -2 }}
-              whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: index * 0.2 }}
-              whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(0,0,0,0.3)" }}
             >
               <service.SvgComponent className="mb-6 w-28 h-28 text-blue-600 dark:text-blue-400" />
               <h3 className="text-xl font-semibold mb-4">{service.title}</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
                 {service.description}
               </p>
-              <motion.a
+              <a
                 href={service.link}
                 className="text-blue-600 dark:text-blue-400 hover:underline"
-                whileHover={{ scale: 1.1 }}
               >
                 Learn More
-              </motion.a>
-            </motion.div>
+              </a>
+            </div>
           ))}
         </div>
       </div>
     </section>
   );
 }
+
 
 

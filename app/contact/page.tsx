@@ -1,4 +1,3 @@
-import Navbar from "../../components/layout/Navbar";
 import HubspotContact from "../../components/forms/HubspotForm";
 
 export default function Contact() {
@@ -8,7 +7,6 @@ export default function Contact() {
       text-foreground 
       transition-colors 
       duration-300">
-      <Navbar />
       <main className="space-y-16 p-8">
         <h1 className="text-4xl font-bold text-center">Contact Us</h1>
         <p className="text-center text-lg">
