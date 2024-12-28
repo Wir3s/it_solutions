@@ -17,7 +17,7 @@ const projects = [
     description:
       "A playful, vibrant website for a local pizza restaurant, incorporating gaming and comic book themes to engage customers.",
     imageUrl: "/images/projects/poweruppizza.png",
-    link: "/projects/power-up-pizzeria", // Add a unique link for each project
+    link: "https://pizzasite-phi.vercel.app/", // Add a unique link for each project
   },
   {
     title: "Mars Rover Photo Gallery",
