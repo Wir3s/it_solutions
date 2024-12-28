@@ -63,7 +63,8 @@ export default function ServicesPage() {
               key={index}
               className="flex flex-col lg:flex-row items-center lg:items-start"
             >
-              <service.SvgComponent className="mb-6 lg:mb-0 lg:mr-8 w-32 h-32 text-blue-600 dark:text-blue-400" />
+              <service.SvgComponent className="mb-6 lg:mb-0 lg:mr-8 w-48 h-48 text-blue-600 dark:text-blue-400" />
+
               <div>
                 <h2 className="text-2xl font-semibold mb-4">{service.title}</h2>
                 <p className="text-lg text-gray-600 dark:text-gray-300">
