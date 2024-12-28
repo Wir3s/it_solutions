@@ -1,18 +1,24 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 interface ProjectCardProps {
   title: string;
   description: string;
   imageUrl?: string;
+  link: string; // The link could be an internal or external URL
 }
 
 export default function ProjectCard({ 
   title, 
   description, 
-  imageUrl 
+  imageUrl, 
+  link 
 }: ProjectCardProps) {
+  // Check if the link is an external URL
+  const isExternal = link.startsWith("http");
+
   return (
     <div 
       className="p-6 rounded-lg shadow-md 
@@ -44,15 +50,34 @@ export default function ProjectCard({
       </p>
 
       {/* Button */}
-      <button 
-        className="px-6 py-3 rounded-md 
-        bg-blue-600 text-white 
-        hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 
-        transition-all focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-800"
-        aria-label={`View ${title} project details`}
-      >
-        View Project
-      </button>
+      {isExternal ? (
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-6 py-3 rounded-md 
+          bg-blue-600 text-white 
+          hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 
+          transition-all focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-800"
+          aria-label={`View ${title} project details`}
+        >
+          View Project
+        </a>
+      ) : (
+        <Link 
+          href={link}
+          className="px-6 py-3 rounded-md 
+          bg-blue-600 text-white 
+          hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 
+          transition-all focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-800"
+          aria-label={`View ${title} project details`}
+        >
+          View Project
+        </Link>
+      )}
     </div>
   );
 }
+
+
+
