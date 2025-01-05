@@ -29,6 +29,8 @@ export default function AboutSection() {
       </h3>
       <p className="text-lg">
       Hello! I&apos;m Andre, an experienced IT professional and web developer dedicated to solving complex challenges and delivering tailored solutions for small businesses. My expertise spans IT support, website design, and personalized tech consulting, ensuring that your unique needs are met with efficiency and creativity.
+      <br /><br />
+      Based in Stillwater, Minnesota, I can provide on-site services to the Twin Cities metro area and remote support to clients worldwide. Whether you need a new website, tech troubleshooting, or a comprehensive IT strategy, I&apos;m here to help you succeed in the digital world.
       </p>
     </section>
   );
