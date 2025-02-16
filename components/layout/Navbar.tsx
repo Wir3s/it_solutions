@@ -2,6 +2,7 @@
 
 import ThemeToggle from "../ui/ThemeToggle";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar() {
   return (
@@ -10,7 +11,13 @@ export default function Navbar() {
       aria-label="Main Navigation"
     >
       <Link href="/" className="text-xl font-bold text-gray-900 dark:text-white">
-        Bessette IT Solutions
+      <Image
+          src="/logo.png"
+          alt="Bessette IT Solutions logo"
+          width={150}
+          height={50}
+          className="rounded-lg"
+        />
       </Link>
       <div className="flex items-center space-x-4">
         <Link 
