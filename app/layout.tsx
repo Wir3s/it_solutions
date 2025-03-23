@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { ThemeProvider } from "next-themes";
 import localFont from "next/font/local";
-import Navbar from "../components/layout/Navbar"; // Import Navbar
-import Footer from "../components/layout/Footer"; // Import Footer
+import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -36,15 +36,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body 
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground min-h-screen`}
       >
         <ThemeProvider
           attribute="class"
@@ -52,13 +48,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar /> {/* Add Navbar here */}
-          <main>{children}</main> {/* Page-specific content */}
-          <Footer /> {/* Add Footer here */}
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
   );
 }
+
 
 
