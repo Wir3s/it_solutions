@@ -13,11 +13,11 @@ const projects = [
     link: "https://cosmicswirls.com", // Add a unique link for each project
   },
   {
-    title: "Power-Up Pizzeria Website",
+    title: "Our Only Earth",
     description:
-      "A playful, vibrant website for a local pizza restaurant, incorporating gaming and comic book themes to engage customers.",
-    imageUrl: "/images/projects/poweruppizza.png",
-    link: "https://pizzasite-phi.vercel.app/", // Add a unique link for each project
+      "A website dedicated to raising awareness about climate change, featuring educational resources and interactive content to engage users.",
+    imageUrl: "/images/projects/ouronlyearth.png",
+    link: "https://ouronlyearth.com", // Add a unique link for each project
   },
   {
     title: "Mars Rover Photo Gallery",
