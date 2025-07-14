@@ -1,4 +1,4 @@
-import HubspotContact from "../../components/forms/HubspotForm";
+import GoogleContact from "../../components/forms/GoogleForm";
 
 export default function Contact() {
   return (
@@ -13,7 +13,7 @@ export default function Contact() {
           Feel free to reach out to us using the form below.
         </p>
         <div className="mx-auto max-w-xl">
-          <HubspotContact /> 
+          <GoogleContact /> 
         </div>
       </main>
     </div>
