@@ -8,10 +8,6 @@ export default function Contact() {
       transition-colors 
       duration-300">
       <main className="space-y-16 p-8">
-        <h1 className="text-4xl font-bold text-center">Contact Us</h1>
-        <p className="text-center text-lg">
-          Feel free to reach out to us using the form below.
-        </p>
         <div className="mx-auto max-w-xl">
           <GoogleContact /> 
         </div>
